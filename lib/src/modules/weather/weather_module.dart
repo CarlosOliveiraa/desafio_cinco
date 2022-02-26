@@ -4,7 +4,7 @@ import 'view/weather_page.dart';
 
 class WeatherModule extends Module {
   @override
-  List<Bind<Object>> get binds => super.binds;
+  List<Bind<Object>> get binds => [];
 
   @override
   List<ModularRoute> get routes => [

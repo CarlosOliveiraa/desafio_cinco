@@ -4,7 +4,7 @@ import 'package:desafio_cinco/src/modules/weather/domain/repositories/weather_re
 import '../entities/weather_model.dart';
 
 abstract class IWeatherUsecase {
-  Future<Either<Exception, List<WeatherModel>>> call(String city);
+  Future<Either<Exception, List<WeatherModel>>> call(String? city);
 }
 
 class WeatherUsecase implements IWeatherUsecase {
@@ -14,7 +14,7 @@ class WeatherUsecase implements IWeatherUsecase {
 
   @override
   Future<Either<Exception, List<WeatherModel>>> call(String? city) async {
-    if (city == null) {
+    if (city == null || city.isEmpty) {
       return Left(InvalidTextError());
     }
 

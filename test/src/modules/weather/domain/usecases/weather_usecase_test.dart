@@ -24,9 +24,11 @@ void main() {
     when(() => repository.search(any()))
         .thenAnswer((_) async => const Right(<WeatherModel>[]));
 
-    final result = await usecase(null);
+    var result = await usecase(null);
 
-    expect(result.isLeft(), true);
     expect(result.fold(id, id), isA<InvalidTextError>());
+    result =  await usecase('');
+    expect(result.fold(id, id), isA<InvalidTextError>());
+
   });
 }

@@ -1,11 +1,11 @@
-class WeatherModel {
+class WeatherEntity {
   final String temperature;
   final String wind;
   final String description;
-  final List<String> forecast;
+  final List<dynamic> forecast;
   final String day;
 
-  WeatherModel({
+  WeatherEntity({
     required this.temperature,
     required this.wind,
     required this.description,

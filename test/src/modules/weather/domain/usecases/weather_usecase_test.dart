@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:desafio_cinco/src/modules/weather/domain/entities/weather_model.dart';
+import 'package:desafio_cinco/src/modules/weather/domain/entities/weather_entity.dart';
 import 'package:desafio_cinco/src/modules/weather/domain/errors/erros.dart';
 import 'package:desafio_cinco/src/modules/weather/domain/repositories/weather_repository.dart';
 import 'package:desafio_cinco/src/modules/weather/domain/usecases/weather_usecase.dart';
@@ -14,15 +14,15 @@ void main() {
 
   test('deve retornar uma lista de cidades', () async {
     when(() => repository.search(any()))
-        .thenAnswer((_) async => const Right(<WeatherModel>[]));
+        .thenAnswer((_) async => const Right(<WeatherEntity>[]));
 
     final result = await usecase("Curitiba");
 
-    expect(result.fold(id, id), isA<List<WeatherModel>>());
+    expect(result.fold(id, id), isA<List<WeatherEntity>>());
   });
   test('deve retornar um InvalidTextError', () async {
     when(() => repository.search(any()))
-        .thenAnswer((_) async => const Right(<WeatherModel>[]));
+        .thenAnswer((_) async => const Right(<WeatherEntity>[]));
 
     var result = await usecase(null);
 

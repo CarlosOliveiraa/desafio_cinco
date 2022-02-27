@@ -1,8 +1,6 @@
-import 'dart:convert';
+import 'package:desafio_cinco/src/modules/weather/domain/entities/weather_entity.dart';
 
-import 'package:desafio_cinco/src/modules/weather/domain/entities/weather_model.dart';
-
-class WeatherSearchModel extends WeatherModel {
+class WeatherSearchModel extends WeatherEntity {
   WeatherSearchModel(
       {required temperature,
       required wind,
@@ -26,18 +24,16 @@ class WeatherSearchModel extends WeatherModel {
     };
   }
 
-  factory WeatherSearchModel.fromMap(Map<String, dynamic> map) {
+  factory WeatherSearchModel.fromJson(Map<String, dynamic> json) {
     return WeatherSearchModel(
-      temperature: map['temperature'] ?? '',
-      wind: map['wind'] ?? '',
-      description: map['description'] ?? '',
-      forecast: List<String>.from(map['forecast']),
-      day: map['day'] ?? '',
+      temperature: json['temperature'] ?? '',
+      wind: json['wind'] ?? '',
+      description: json['description'] ?? '',
+      forecast: json['forecast'] == null
+          ? []
+          : List<String>.from(
+              json['forecast'].map((e) => WeatherSearchModel.fromJson(e))),
+      day: json['day'] ?? '',
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory WeatherSearchModel.fromJson(String source) =>
-      WeatherSearchModel.fromMap(json.decode(source));
 }

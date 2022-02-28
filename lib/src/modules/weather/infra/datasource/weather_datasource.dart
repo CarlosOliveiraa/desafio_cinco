@@ -1,5 +1,6 @@
-import '../models/weather_search_model.dart';
+import '../../domain/entities/weather_entity.dart';
+
 
 abstract class WeatherDataSource {
-  Future<List<WeatherSearchModel>> getWeather(String? city);
+  Future<WeatherEntity> getWeather(String? city);
 }

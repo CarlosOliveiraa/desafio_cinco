@@ -12,7 +12,7 @@ class WeatherRepositoryIpml implements IWeatherRepository {
   WeatherRepositoryIpml(this.dataSource);
 
   @override
-  Future<Either<Exception, List<WeatherEntity>>> search(String? city) async {
+  Future<Either<Exception, WeatherEntity>> search(String? city) async {
     try {
       final result = await dataSource.getWeather(city);
       return Right(result);

@@ -1,6 +1,14 @@
 import 'package:desafio_cinco/src/modules/weather/domain/entities/weather_entity.dart';
 
 class WeatherSearchModel extends WeatherEntity {
+
+  set temperature(String value) => temperature = value;
+  set wind(String value) => wind = value;
+  set description(String value) => description = value;
+  set forecast(List value) => forecast = value;
+  set day(String value) => day = value;
+
+
   WeatherSearchModel(
       {required temperature,
       required wind,

@@ -4,7 +4,7 @@ import 'package:desafio_cinco/src/modules/weather/domain/repositories/weather_re
 import '../entities/weather_entity.dart';
 
 abstract class IWeatherUsecase {
-  Future<Either<Exception, List<WeatherEntity>>> call(String? city);
+  Future<Either<Exception, WeatherEntity>> call(String? city);
 }
 
 class WeatherUsecase implements IWeatherUsecase {
@@ -13,7 +13,7 @@ class WeatherUsecase implements IWeatherUsecase {
   WeatherUsecase(this.repository);
 
   @override
-  Future<Either<Exception, List<WeatherEntity>>> call(String? city) async {
+  Future<Either<Exception, WeatherEntity>> call(String? city) async {
     if (city == null || city.isEmpty) {
       return Left(InvalidTextError());
     }

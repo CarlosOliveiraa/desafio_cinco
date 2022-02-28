@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../domain/entities/weather_entity.dart';
+
 class WeatherCard extends StatelessWidget {
   final double width;
   final double height;
@@ -7,19 +9,27 @@ class WeatherCard extends StatelessWidget {
   final String? day;
   final String? temperature;
   final String? wind;
+  final WeatherEntity? result;
+  final String? description;
 
-  const WeatherCard(
-      {Key? key,
-      this.width = 400,
-      this.height = 100,
-      this.icon,
-      this.day,
-      this.temperature,
-      this.wind})
-      : super(key: key);
+  const WeatherCard({
+    Key? key,
+    this.width = 400,
+    this.height = 100,
+    this.icon,
+    this.day,
+    this.temperature,
+    this.wind,
+     this.result, this.description,
+  }) : super(key: key);
+
+  
 
   @override
   Widget build(BuildContext context) {
+    
+    
+
     return Container(
       width: width,
       height: height,
@@ -44,7 +54,7 @@ class WeatherCard extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                "Dia: " + day!,
+                result!.day,
                 style: const TextStyle(fontSize: 20),
               )
             ],
@@ -61,8 +71,7 @@ class WeatherCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text("Temperatura: " + temperature!,
-                  style: const TextStyle(fontSize: 20))
+              Text(result!.temperature, style: const TextStyle(fontSize: 20))
             ],
           ),
           Row(
@@ -77,7 +86,7 @@ class WeatherCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text("Ventos: " + wind!, style: const TextStyle(fontSize: 20))
+              Text(result!.wind, style: const TextStyle(fontSize: 20))
             ],
           ),
         ],

@@ -1,14 +1,22 @@
-import '../../../../infra/models/weather_search_model.dart';
+import 'package:flutter/cupertino.dart';
 
+import '../../../../domain/entities/weather_entity.dart';
+
+@immutable
 abstract class WeatherState {}
 
 class WeatherSuccess implements WeatherState {
-  final List<WeatherSearchModel> list;
+  final WeatherEntity list;
   WeatherSuccess(this.list);
+  
 }
 
 class WeatherStart extends WeatherState {}
 
 class WeatherLoad extends WeatherState {}
 
-class WeatherError extends WeatherState {}
+class WeatherError extends WeatherState {
+  final Exception error;
+
+  WeatherError(this.error);
+}

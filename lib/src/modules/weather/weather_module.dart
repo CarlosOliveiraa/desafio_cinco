@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'view/weather_page.dart';
+import 'presenter/weather/weather_page.dart';
+
+
 
 class WeatherModule extends Module {
   @override

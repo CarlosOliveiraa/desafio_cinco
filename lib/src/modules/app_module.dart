@@ -1,15 +1,21 @@
-import 'package:desafio_cinco/src/modules/product/product_module.dart';
-
-import 'package:desafio_cinco/src/modules/weather/weather_module.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'weather/domain/usecases/weather_usecase.dart';
+import 'weather/external/datasources/api_datasource.dart';
+import 'weather/infra/repositories/weather_repository_ipml.dart';
+import 'weather/weather_module.dart';
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind((i) => Dio()),
+        Bind((i) => ApiDatasource(i())),
+        Bind((i) => WeatherRepositoryIpml(i())),
+        Bind((i) => WeatherUsecase(i())),
+      ];
 
   @override
   List<ModularRoute> get routes => [
         ModuleRoute("/weatherPage", module: WeatherModule()),
-        ModuleRoute("/productPage", module: ProductModule()),
       ];
 }

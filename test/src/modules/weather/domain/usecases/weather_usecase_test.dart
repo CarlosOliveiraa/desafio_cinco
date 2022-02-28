@@ -12,17 +12,25 @@ void main() {
   final repository = IWeatherRepositoryMock();
   final usecase = WeatherUsecase(repository);
 
+   var weatherResult = WeatherEntity(
+    day: "um",
+    temperature: "23",
+    wind: "12",
+    forecast: [],
+    description: "asdf",
+  );
+
   test('deve retornar uma lista de cidades', () async {
     when(() => repository.search(any()))
-        .thenAnswer((_) async => const Right(<WeatherEntity>[]));
+        .thenAnswer((_) async =>  Right(weatherResult));
 
     final result = await usecase("Curitiba");
 
-    expect(result.fold(id, id), isA<List<WeatherEntity>>());
+    expect(result.fold(id, id), isA<WeatherEntity>());
   });
   test('deve retornar um InvalidTextError', () async {
     when(() => repository.search(any()))
-        .thenAnswer((_) async => const Right(<WeatherEntity>[]));
+        .thenAnswer((_) async =>  Right(weatherResult));
 
     var result = await usecase(null);
 

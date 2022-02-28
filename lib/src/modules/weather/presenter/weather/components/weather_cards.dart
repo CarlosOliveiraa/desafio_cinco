@@ -20,16 +20,12 @@ class WeatherCard extends StatelessWidget {
     this.day,
     this.temperature,
     this.wind,
-     this.result, this.description,
+    this.result,
+    this.description,
   }) : super(key: key);
-
-  
 
   @override
   Widget build(BuildContext context) {
-    
-    
-
     return Container(
       width: width,
       height: height,
@@ -54,7 +50,7 @@ class WeatherCard extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                result!.day,
+                "Day: ${result!.day}",
                 style: const TextStyle(fontSize: 20),
               )
             ],
@@ -71,7 +67,8 @@ class WeatherCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text(result!.temperature, style: const TextStyle(fontSize: 20))
+              Text("Temperature: ${result!.temperature}",
+                  style: const TextStyle(fontSize: 20))
             ],
           ),
           Row(
@@ -86,7 +83,8 @@ class WeatherCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text(result!.wind, style: const TextStyle(fontSize: 20))
+              Text("Wind: ${result!.wind}",
+                  style: const TextStyle(fontSize: 20))
             ],
           ),
         ],

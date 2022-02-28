@@ -17,7 +17,7 @@ void main() {
 
   test('Deve retornar uma lista de WeatherSearchModel', () async {
     when(() => datasouce.getWeather(any()))
-        .thenAnswer((_) async => <WeatherSearchModel>[]);
+        .thenAnswer((_) async => Right(WeatherSearchModel());
     final result = await repository.search("Curitiba");
     expect(result.fold(id, id), isA<List<WeatherEntity>>());
   });

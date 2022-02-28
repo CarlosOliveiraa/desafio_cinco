@@ -1,3 +1,4 @@
+import 'package:desafio_cinco/src/modules/weather/presenter/weather/components/weather_cards.dart';
 import 'package:desafio_cinco/src/modules/weather/presenter/weather/weather_bloc/events/weather_events.dart';
 import 'package:desafio_cinco/src/modules/weather/presenter/weather/weather_bloc/states/state.dart';
 import 'package:desafio_cinco/src/modules/weather/presenter/weather/weather_bloc/weather_bloc.dart';
@@ -63,34 +64,37 @@ class _WeatherPageState extends State<WeatherPage> {
                       height: MediaQuery.of(context).size.height * 0.70,
                       child: Column(
                         children: [
-                          Text(result.temperature),
-                          Text(result.wind),
-                          Text(result.description),
+                          Text("Temperature: ${result.temperature}"),
+                          Text("Wind: ${result.wind}"),
+                          Text("Description: ${result.description}"),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          ListView(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            children: [
+                              WeatherCard(
+                                result: result.forecast[0],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              WeatherCard(
+                                result: result.forecast[1],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              WeatherCard(
+                                result: result.forecast[2],
+                              )
+                            ],
+                          ),
                         ],
                       ),
                     );
                   }),
-              // AnimatedBuilder(
-              //   animation: ,
-              //   builder: (_, child) {
-              //     return ListView.builder(
-              //       scrollDirection: Axis.vertical,
-              //       shrinkWrap: true,
-              //       itemCount: controller.list.length,
-              //       itemBuilder: (_, index) {
-              //         // final weather = controller.list[index];
-              //         return Container(
-              //           padding: const EdgeInsets.all(10),
-              //           child: WeatherCard(
-              //             day: weather.day,
-              //             temperature: weather.temperature,
-              //             wind: weather.wind,
-              //           ),
-              //         );
-              //       },
-              //     );
-              //   },
-              // ),
             ],
           ),
         ),
